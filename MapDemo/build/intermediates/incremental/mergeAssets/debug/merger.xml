@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="G:\android-program\SummerProject\MapDemo\assets" >
+            <file
+                name="arrow.png"
+                path="G:\android-program\SummerProject\MapDemo\assets\arrow.png" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="G:\android-program\SummerProject\MapDemo\build-types\debug\assets" />
+    </dataSet>
+
+</merger>

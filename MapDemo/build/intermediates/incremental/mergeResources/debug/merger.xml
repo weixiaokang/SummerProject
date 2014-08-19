@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="G:\android-program\SummerProject\MapDemo\res" >
+            <file
+                name="btn_default_small"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_default_small.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_default_small_normal"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_default_small_normal.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_default_small_normal_disable"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_default_small_normal_disable.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_default_small_pressed"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_default_small_pressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_map_poi"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_map_poi.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_nav_drag_down"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_nav_drag_down.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_nav_drag_down_normal"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_nav_drag_down_normal.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_nav_drag_down_pressed"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_nav_drag_down_pressed.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_poi_search_normal"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_poi_search_normal.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_route_next"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_route_next.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="btn_route_pre"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\btn_route_pre.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="groundoverlay"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\groundoverlay.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="left_back"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\left_back.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_driving"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_driving.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_driving_focused"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_driving_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_driving_off"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_driving_off.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_driving_on"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_driving_on.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_transit"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_transit.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_transit_focused"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_transit_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_transit_off"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_transit_off.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_transit_on"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_transit_on.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_walk"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_walk.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_walk_focused"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_walk_focused.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_walk_off"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_walk_off.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mode_walk_on"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\mode_walk_on.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="next"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\next.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="next_disable"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\next_disable.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="point"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\point.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="prev"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\prev.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="prev_disable"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\prev_disable.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="text_search"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\text_search.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="text_search_default"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\text_search_default.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="text_search_pressed"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\text_search_pressed.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="text_search_selected"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable\text_search_selected.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="badge_sa"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\badge_sa.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="badge_wa"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\badge_wa.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bus"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\bus.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="car"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\car.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="custom_info_bubble"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\custom_info_bubble.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="direct_mapsearch"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\direct_mapsearch.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="direct_mapsearch_pressed"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\direct_mapsearch_pressed.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="divider"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\divider.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="downarrow"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\downarrow.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="end"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\end.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="icon_poisearch"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\icon_poisearch.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="location_marker"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\location_marker.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="man"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\man.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point1"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point1.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point2"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point2.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point3"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point3.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point4"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point4.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point5"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point5.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="point6"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\point6.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="rightarrow"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\rightarrow.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="search_plate_global"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\search_plate_global.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="start"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\start.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="start_uri"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-hdpi\start_uri.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bus"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\bus.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="car"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\car.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="end"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\end.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\ic_launcher.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="man"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\man.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="start"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-ldpi\start.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="arrow"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\arrow.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bus"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\bus.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="car"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\car.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="custom_info_bubble"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\custom_info_bubble.9.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="end"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\end.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="man"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\man.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="start"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-mdpi\start.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="bus"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\bus.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="car"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\car.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="end"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\end.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="man"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\man.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="start"
+                path="G:\android-program\SummerProject\MapDemo\res\drawable-xhdpi\start.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="arc_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\arc_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="basicmap_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\basicmap_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="busline_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\busline_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="busline_dialog"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\busline_dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="busline_item"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\busline_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="camera_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\camera_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="circle_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\circle_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_info_contents"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\custom_info_contents.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="custom_info_window"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\custom_info_window.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="empty"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\empty.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="events_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\events_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="expandablelistviewselector"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\expandablelistviewselector.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="feature"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\feature.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="geocoder_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\geocoder_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="groundoverlay_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\groundoverlay_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="item"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="layers_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\layers_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="location"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\location.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="locationmodesource_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\locationmodesource_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="locationnetwork_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\locationnetwork_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="locationsource_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\locationsource_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\main_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="marker"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\marker.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="marker_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\marker_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="navsearch_list_poi"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\navsearch_list_poi.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="offlinemap_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\offlinemap_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="offlinemap_child"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\offlinemap_child.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="offlinemap_group"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\offlinemap_group.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="opengl_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\opengl_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="poiaroundsearch_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\poiaroundsearch_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="poikeywordsearch_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\poikeywordsearch_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="poikeywordsearch_uri"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\poikeywordsearch_uri.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="poi_result_list"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\poi_result_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="polygon_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\polygon_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="polyline_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\polyline_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="routesearch_list_poi"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\routesearch_list_poi.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="route_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\route_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="route_inputs"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\route_inputs.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="screenshot_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\screenshot_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="tileoverlay_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\tileoverlay_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="ui_settings_activity"
+                path="G:\android-program\SummerProject\MapDemo\res\layout\ui_settings_activity.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="G:\android-program\SummerProject\MapDemo\res\values\colors.xml"
+                qualifiers="" >
+                <color name="grey" > #ebebeb
+                </color>
+            </file>
+            <file
+                path="G:\android-program\SummerProject\MapDemo\res\values\strings.xml"
+                qualifiers="" >
+                <string name="layers_demo" >Layers图层功能
+                </string>
+                <string name="reset_map" >Reset
+                </string>
+                <string name="fill_stroke" >Fill Stroke
+                </string>
+                <string name="location" >正在定位中
+                </string>
+                <string name="screenshot_demo" >地图截屏功能
+                </string>
+                <string name="properties_circle" >设置Circle属性
+                </string>
+                <string name="offlinemap_demo" >离线地图功能
+                </string>
+                <string name="left_arrow" >\u2190
+                </string>
+                <string name="move_the_camera" >移动camera
+                </string>
+                <string name="properties_polygon" >设置Polygon属性
+                </string>
+                <string name="my_location" >My Location
+                </string>
+                <string name="opengl_demo" >Opengl接口功能
+                </string>
+                <string name="locationmodesource_demo" >Location三种模式
+                </string>
+                <string name="beijing" >"北京"
+                </string>
+                <string name="error_other" >未知错误，请稍后重试!错误码为
+                </string>
+                <string name="update" >"更新"
+                </string>
+                <string name="busline_demo" >Busline公交查询
+                </string>
+                <string name="basic_description" >介绍如何创建一个基本地图
+                </string>
+                <string name="stop" >"停止"
+                </string>
+                <string name="mylocation_layer" >我的位置图层
+                </string>
+                <string name="map_not_ready" >SupportMapFragment初始化失败
+                </string>
+                <string name="right_arrow" >\u2192
+                </string>
+                <string name="bottom_right" >右下
+                </string>
+                <string name="polyline_demo" >Polylines功能
+                </string>
+                <string name="events_description" >介绍对地图的点击，长按，拖动地图事件功能
+                </string>
+                <string name="poiaroundsearch_description" >介绍poi周边搜索功能
+                </string>
+                <string name="arc_demo" >Arc功能
+                </string>
+                <string name="uisettings_demo" >UI Settings功能
+                </string>
+                <string name="no_demos" >No demos
+                </string>
+                <string name="normal" >Normal
+                </string>
+                <string name="zoom_buttons" >缩放按钮
+                </string>
+                <string name="zoom_out" >-
+                </string>
+                <string name="gpsfollow" >追随
+                </string>
+                <string name="traffic" >Traffic
+                </string>
+                <string name="arc_description" >介绍在地图中绘制弧形
+                </string>
+                <string name="basic_map" >基本地图
+                </string>
+                <string name="poikeywordsearch_description" >介绍poi关键字搜索功能
+                </string>
+                <string name="up_arrow" >\u2191
+                </string>
+                <string name="demo_title" >AMaps3D  Demos
+                </string>
+                <string name="polyline_description" >介绍在地图中绘制线条
+                </string>
+                <string name="mapOption_description" >介绍用AMapOptions展示一个地图
+                </string>
+                <string name="pause" >"暂停"
+                </string>
+                <string name="bottom_left" >左下
+                </string>
+                <string name="hybrid" >Hybrid
+                </string>
+                <string name="route_description" >介绍如何在地图中绘制Route
+                </string>
+                <string name="clear_map" >Clear
+                </string>
+                <string name="marker_demo" >Markers功能
+                </string>
+                <string name="locationsource_demo" >Location小蓝点功能
+                </string>
+                <string name="map_screenshot" >地图截屏
+                </string>
+                <string name="fill_color" >Fill Color
+                </string>
+                <string name="rotate" >旋转手势
+                </string>
+                <string name="search_title" >搜索关键字
+                </string>
+                <string name="zoom_gestures" >缩放手势
+                </string>
+                <string name="camera_demo" >Camera功能
+                </string>
+                <string name="circle_description" >介绍在地图中绘制圆形
+                </string>
+                <string name="polygon_demo" >Polygons功能
+                </string>
+                <string name="stroke_width" >Stroke Width
+                </string>
+                <string name="poiaroundsearch_demo" >poi周边搜索
+                </string>
+                <string name="locationsource_description" >介绍对系统定位显示小蓝点功能
+                </string>
+                <string name="touch_the_map" >地图触摸事件
+                </string>
+                <string name="tap_instructions" >点击或者长按地图
+                </string>
+                <string name="scale" >比例尺
+                </string>
+
+                <string-array name="layers_array" >
+                    <item>
+@string/normal
+                    </item>
+                    <item>
+@string/satellite
+                    </item>
+                    <item>
+@string/night_mode
+                    </item>
+                </string-array>
+
+                <string name="custom_info_window" >Custom info window
+                </string>
+                <string name="transparency" >Transparency
+                </string>
+                <string name="tileoverlay_description" >介绍在地图中绘制TileOverlay功能
+                </string>
+                <string name="tileoverlay_demo" >TileOverlay功能
+                </string>
+                <string name="default_info_window" >Default info window
+                </string>
+                <string name="busline_description" >介绍如何在地图中绘制BusLine
+                </string>
+                <string name="satellite" >Satellite
+                </string>
+                <string name="bottom_center" >底部居中
+                </string>
+                <string name="gpsrotate" >旋转
+                </string>
+                <string name="geocoder_description" >介绍 geocoder地理编码 功能
+                </string>
+                <string name="down_arrow" >\u2193
+                </string>
+                <string name="layers_description" >介绍地图分别以正常、卫星模式展示出
+                </string>
+                <string name="marker_description" >介绍在地图上添加marker和infoWindow
+                </string>
+                <string name="remove" >"删除"
+                </string>
+                <string name="properties_polyline" >设置Polyline属性
+                </string>
+                <string name="animate" >Animate
+                </string>
+                <string name="mapOption_demo" >AMapOptions实现地图
+                </string>
+                <string name="gpslocate" >定位
+                </string>
+                <string name="opengl_description" >介绍地图中开放Opengl接口功能
+                </string>
+                <string name="events_demo" >Events功能
+                </string>
+                <string name="tilt" >倾斜手势
+                </string>
+                <string name="geocoder_demo" >地理编码 功能
+                </string>
+                <string name="custom_info_contents" >Custom info contents
+                </string>
+                <string name="groundoverlay_description" >介绍在地图中绘制GroundOverlay功能
+                </string>
+                <string name="uisettings_description" >介绍地图中UI Settings功能
+                </string>
+                <string name="start" >"开始"
+                </string>
+                <string name="locationNetwork_demo" >网络定位功能
+                </string>
+                <string name="terrain" >Terrain
+                </string>
+                <string name="buttonScale" >获取比例尺
+                </string>
+                <string name="width" >Width
+                </string>
+                <string name="no_result" >对不起，没有搜索到相关数据！
+                </string>
+                <string name="locationGPS_description" >介绍如何使用gps定位
+                </string>
+                <string name="night_mode" >Night
+                </string>
+                <string name="go_to_zhongguancun" >中关村
+                </string>
+                <string name="camera_description" >介绍在地图中操作Camera各种功能
+                </string>
+                <string name="poikeywordsearch_demo" >poi关键字搜索
+                </string>
+                <string name="drag_melbourne" >Drag Melbourne
+                </string>
+                <string name="error_key" >key验证无效！
+                </string>
+                <string name="locationNetwork_description" >介绍如何使用网络定位
+                </string>
+                <string name="screenshot_description" >介绍对地图进行截屏
+                </string>
+                <string name="zoom_in" >+
+                </string>
+                <string name="go_to_lujiazui" >陆家嘴
+                </string>
+                <string name="locationGPS_demo" >gps定位功能
+                </string>
+                <string name="route_demo" >Route路径规划
+                </string>
+                <string name="groundoverlay_demo" >GroundOverlay功能
+                </string>
+                <string name="logo_position" >logo位置
+                </string>
+                <string name="error_network" >搜索失败,请检查网络连接！
+                </string>
+                <string name="compass" >指南针
+                </string>
+                <string name="circle_demo" >Circles功能
+                </string>
+                <string name="locationmodesource_description" >介绍定位、追随、选择不同模式使用
+                </string>
+                <string name="polygon_description" >介绍在地图绘制多边形
+                </string>
+                <string name="scroll" >滑动手势
+                </string>
+                <string name="offlinemap_description" >介绍如何使用离线地图
+                </string>
+                <string name="stop_animation" >\u25A0
+                </string>
+            </file>
+        </source>
+        <source path="G:\android-program\SummerProject\MapDemo\build\generated\res\rs\debug" />
+        <source path="G:\android-program\SummerProject\MapDemo\build\generated\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="G:\android-program\SummerProject\MapDemo\build-types\debug\res" />
+    </dataSet>
+
+</merger>

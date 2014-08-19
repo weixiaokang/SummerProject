@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="G:\android-program\MapDemo\build\intermediates\pre-dexed\debug\AMap_Services_V2.2.1-7f52e8248c5bba8d15340f8af225df13ffc49664.jar"
+        jar="G:\android-program\MapDemo\libs\AMap_Services_V2.2.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e6ea761689ecf84f0ba3f55be702a277a827d801"/>
+    <item
+        dex="G:\android-program\MapDemo\build\intermediates\pre-dexed\debug\AMap_3DMap_V2.2.1-2665c429999776d6d32f69473443b29e63d08bd0.jar"
+        jar="G:\android-program\MapDemo\libs\AMap_3DMap_V2.2.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="42c9f3c5f35d3cf106a0c419b1bc542caa3ae1d8"/>
+    <item
+        dex="G:\android-program\MapDemo\build\intermediates\pre-dexed\debug\Android_Location_V1.1.2-af200996a8b18fec8b1b6d1d8d0f55c5615aa42c.jar"
+        jar="G:\android-program\MapDemo\libs\Android_Location_V1.1.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="c6aa98ac072ad580875266ae2a2effd9e64e0861"/>
+    <item
+        dex="G:\android-program\MapDemo\build\intermediates\pre-dexed\debug\android-support-v4-eb16a7e5b5f660cfd749ab62c305731d19cdaa3f.jar"
+        jar="G:\android-program\MapDemo\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="307c1cc532eabbf1d135b43e5c983c9da700449d"/>
+
+</pre-dex-items>
