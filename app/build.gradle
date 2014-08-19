@@ -1,0 +1,32 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        applicationId "com.weixiaokang.summerproject"
+        minSdkVersion 15
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/AMap_3DMap_V2.2.1.jar')
+    compile files('libs/AMap_Services_V2.2.1.jar')
+    compile files('libs/Android_Location_V1.1.2.jar')
+}
