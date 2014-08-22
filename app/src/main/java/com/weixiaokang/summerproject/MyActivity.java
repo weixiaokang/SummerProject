@@ -1,12 +1,15 @@
 package com.weixiaokang.summerproject;
 
 import android.app.Activity;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
@@ -21,15 +24,19 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.TileOverlay;
 
 import java.util.ArrayList;
 
 public class MyActivity extends Activity implements LocationSource, AMapLocationListener{
 
+    private Button myLocation;
+    private TextView longitude, latitude;
     private MapView mapView;
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private LocationManagerProxy mAMapLocationManager;
+    private TileOverlay tileOverlay;
     private Marker marker;
 
     private final boolean DEBUG = true;
@@ -89,6 +96,8 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             mListener.onLocationChanged(aMapLocation);
             marker.setPosition(new LatLng(aMapLocation.getLatitude(), aMapLocation
                     .getLongitude()));
+            longitude.setText(aMapLocation.getLongitude()+"");
+            latitude.setText(aMapLocation.getLatitude()+"");
             float bearing = aMap.getCameraPosition().bearing;
             aMap.setMyLocationRotateAngle(bearing);
         }
@@ -137,6 +146,10 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.getUiSettings().setMyLocationButtonEnabled(true);
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+            AssetManager assetManager = getAssets();
+            myLocation = (Button) findViewById(R.id.my_location);
+            longitude = (TextView) findViewById(R.id.longitude);
+            latitude = (TextView) findViewById(R.id.latitude);
         }
     }
 
