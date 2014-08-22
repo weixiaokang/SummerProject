@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdate;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.BitmapDescriptor;
@@ -26,6 +29,9 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.TileOverlay;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MyActivity extends Activity implements LocationSource, AMapLocationListener{
@@ -111,6 +117,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         init();
+        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(118.933651, 32.109086), 16));
     }
 
     @Override
@@ -147,9 +154,23 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
             AssetManager assetManager = getAssets();
+            saveTileToSD();
+            try {
+                InputStream inputStream = assetManager.open("njupt.jpg");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
+        }
+    }
+
+    private void saveTileToSD() {
+        File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");
+        if (!rootDir.mkdirs()) {
+            Log.i(TAG, "can't create directory");
         }
     }
 

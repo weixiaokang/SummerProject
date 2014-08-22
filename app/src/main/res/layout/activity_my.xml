@@ -21,15 +21,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:text="@string/my_location"/>
         <TextView
             android:id="@+id/longitude"
+            android:gravity="center"
+            android:textSize="20sp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
         <TextView
             android:id="@+id/latitude"
             android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20sp"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
     </LinearLayout>
