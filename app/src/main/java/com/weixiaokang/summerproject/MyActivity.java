@@ -2,6 +2,8 @@ package com.weixiaokang.summerproject;
 
 import android.app.Activity;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -17,7 +19,6 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
-import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
@@ -27,11 +28,18 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.Tile;
 import com.amap.api.maps.model.TileOverlay;
+import com.amap.api.maps.model.TileOverlayOptions;
+import com.amap.api.maps.model.TileProvider;
+import com.amap.api.maps.model.UrlTileProvider;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MyActivity extends Activity implements LocationSource, AMapLocationListener{
@@ -118,6 +126,24 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         mapView.onCreate(savedInstanceState);
         init();
         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(118.933651, 32.109086), 16));
+        TileProvider tileProvider = new UrlTileProvider(256, 256) {
+            @Override
+            public URL getTileUrl(int i, int i2, int i3) {
+                try {
+                    String s = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "father.png";
+                    return new URL("file://" + s);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    Log.i(TAG, "URLException");
+                }
+                return null;
+            }
+        };
+        tileOverlay = aMap.addTileOverlay(new TileOverlayOptions()
+                                            .tileProvider(tileProvider)
+                                            .diskCacheDir("/storage/amap/cache")
+                                            .diskCacheEnabled(true)
+                                            .diskCacheSize(100));
     }
 
     @Override
@@ -153,14 +179,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.getUiSettings().setMyLocationButtonEnabled(true);
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
-            AssetManager assetManager = getAssets();
-            saveTileToSD();
-            try {
-                InputStream inputStream = assetManager.open("njupt.jpg");
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            saveTileToSD();
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
@@ -168,9 +187,23 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
     }
 
     private void saveTileToSD() {
+        AssetManager assetManager = getAssets();
         File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");
         if (!rootDir.mkdirs()) {
             Log.i(TAG, "can't create directory");
+        }
+        File file = new File(rootDir.getPath()+File.separator+"father.png");
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            InputStream inputStream = assetManager.open("njupt.jpg");
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+            inputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i(TAG, "-->IOException");
         }
     }
 
