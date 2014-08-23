@@ -125,25 +125,6 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         init();
-        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(118.933651, 32.109086), 16));
-        TileProvider tileProvider = new UrlTileProvider(256, 256) {
-            @Override
-            public URL getTileUrl(int i, int i2, int i3) {
-                try {
-                    String s = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "father.png";
-                    return new URL("file://" + s);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    Log.i(TAG, "URLException");
-                }
-                return null;
-            }
-        };
-        tileOverlay = aMap.addTileOverlay(new TileOverlayOptions()
-                                            .tileProvider(tileProvider)
-                                            .diskCacheDir("/storage/amap/cache")
-                                            .diskCacheEnabled(true)
-                                            .diskCacheSize(100));
     }
 
     @Override
@@ -152,6 +133,11 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         mapView.onSaveInstanceState(outState);
     }
 
+    /**
+     * initialize the aMap show on screen, marker look like lader,
+     * button for refresh the location information
+     * amap bind the location connecter.
+     */
     private void init() {
         if (aMap == null) {
             if (DEBUG) {
@@ -166,7 +152,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point5));
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point6));
             marker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
-                    .icons(giflist).period(50));
+            .icons(giflist).period(50));
             MyLocationStyle myLocationStyle = new MyLocationStyle();
             myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource
                     (R.drawable.location_marker));
@@ -179,21 +165,19 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.getUiSettings().setMyLocationButtonEnabled(true);
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
-//            saveTileToSD();
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
         }
     }
 
-    private void saveTileToSD() {
+    private void saveTileToSD() throws IOException{
         AssetManager assetManager = getAssets();
         File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");
         if (!rootDir.mkdirs()) {
             Log.i(TAG, "can't create directory");
         }
-        File file = new File(rootDir.getPath()+File.separator+"father.png");
-        try {
+            File file = new File(rootDir.getPath()+File.separator+"father.png");
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             InputStream inputStream = assetManager.open("njupt.jpg");
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -201,12 +185,30 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             fileOutputStream.flush();
             fileOutputStream.close();
             inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.i(TAG, "-->IOException");
-        }
     }
 
+    private void pasteTile() {
+        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(118.933651, 32.109086), 16));
+        TileProvider tileProvider = new UrlTileProvider(256, 256) {
+            @Override
+            public URL getTileUrl(int i, int i2, int i3) {
+                try {
+                    String s = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator + "father.png";
+                    Log.i(TAG, s);
+                    return new URL("file://" + s);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    Log.i(TAG, "URLException");
+                }
+                return null;
+            }
+        };
+        tileOverlay = aMap.addTileOverlay(new TileOverlayOptions()
+                .tileProvider(tileProvider)
+                .diskCacheDir("/storage/amap/cache")
+                .diskCacheEnabled(true)
+                .diskCacheSize(100));
+    }
     @Override
     protected void onPause() {
         super.onPause();
