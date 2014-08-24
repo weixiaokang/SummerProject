@@ -5,14 +5,17 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
@@ -22,8 +25,10 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.Projection;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
@@ -42,7 +47,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MyActivity extends Activity implements LocationSource, AMapLocationListener{
+public class MyActivity extends Activity implements LocationSource, AMapLocationListener , AMap.OnMapTouchListener, AMap.OnCameraChangeListener{
 
     private Button myLocation;
     private TextView longitude, latitude;
@@ -50,8 +55,9 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private LocationManagerProxy mAMapLocationManager;
-    private TileOverlay tileOverlay;
+//    private TileOverlay tileOverlay;
     private Marker marker;
+    private Point touchLocation = new Point();
 
     private final boolean DEBUG = true;
     private final String TAG = "debug";
@@ -110,8 +116,8 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             mListener.onLocationChanged(aMapLocation);
             marker.setPosition(new LatLng(aMapLocation.getLatitude(), aMapLocation
                     .getLongitude()));
-            longitude.setText(aMapLocation.getLongitude()+"");
-            latitude.setText(aMapLocation.getLatitude()+"");
+//            longitude.setText(aMapLocation.getLongitude()+"");
+//            latitude.setText(aMapLocation.getLatitude()+"");
             float bearing = aMap.getCameraPosition().bearing;
             aMap.setMyLocationRotateAngle(bearing);
         }
@@ -165,13 +171,16 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.getUiSettings().setMyLocationButtonEnabled(true);
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
+            aMap.setOnCameraChangeListener(this);
+            aMap.setOnMapTouchListener(this);
+
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
         }
     }
 
-    private void saveTileToSD() throws IOException{
+/*    private void saveTileToSD() throws IOException{
         AssetManager assetManager = getAssets();
         File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");
         if (!rootDir.mkdirs()) {
@@ -185,9 +194,9 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             fileOutputStream.flush();
             fileOutputStream.close();
             inputStream.close();
-    }
+    }*/
 
-    private void pasteTile() {
+ /*   private void pasteTile() {
         aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(118.933651, 32.109086), 16));
         TileProvider tileProvider = new UrlTileProvider(256, 256) {
             @Override
@@ -208,7 +217,8 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
                 .diskCacheDir("/storage/amap/cache")
                 .diskCacheEnabled(true)
                 .diskCacheSize(100));
-    }
+    }*/
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -239,5 +249,29 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return item.getItemId() == R.id.action_settings||super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTouch(MotionEvent event) {
+        if (DEBUG) { Log.i(TAG, "-->onTouch()"); }
+        int x = (int)event.getX();
+        int y = (int)event.getY();
+        touchLocation.set(x, y);
+        Projection projection = aMap.getProjection();
+        LatLng latLng = projection.fromScreenLocation(touchLocation);
+        latitude.setText(""+latLng.latitude);
+        longitude.setText(""+latLng.longitude);
+    }
+
+    @Override
+    public void onCameraChange(CameraPosition cameraPosition) {
+
+    }
+
+    @Override
+    public void onCameraChangeFinish(CameraPosition cameraPosition) {
+        if (DEBUG) { Log.i(TAG, "-->onCameraChange()"); }
+        float zoom = aMap.getCameraPosition().zoom;
+        Toast.makeText(this, ""+zoom, Toast.LENGTH_SHORT).show();
     }
 }
