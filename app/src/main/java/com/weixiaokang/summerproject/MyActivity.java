@@ -1,18 +1,15 @@
 package com.weixiaokang.summerproject;
 
 import android.app.Activity;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,24 +27,17 @@ import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.amap.api.maps.model.Tile;
-import com.amap.api.maps.model.TileOverlay;
-import com.amap.api.maps.model.TileOverlayOptions;
-import com.amap.api.maps.model.TileProvider;
-import com.amap.api.maps.model.UrlTileProvider;
+import com.weixiaokang.summerproject.area.Area;
+import com.amap.api.maps.AMap.OnMarkerClickListener;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
-public class MyActivity extends Activity implements LocationSource, AMapLocationListener , AMap.OnMapTouchListener, AMap.OnCameraChangeListener{
+public class MyActivity extends Activity implements LocationSource, AMapLocationListener
+        , AMap.OnMapTouchListener, AMap.OnCameraChangeListener, OnMarkerClickListener {
 
     private Button myLocation;
     private TextView longitude, latitude;
@@ -58,9 +48,12 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
 //    private TileOverlay tileOverlay;
     private Marker marker;
     private Point touchLocation = new Point();
+    private boolean isInit = true;
+    private Area area = new Area();
 
     private final boolean DEBUG = true;
     private final String TAG = "debug";
+//    private GroundOverlay school;
     @Override
     public void onLocationChanged(Location location) {
 
@@ -116,6 +109,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             mListener.onLocationChanged(aMapLocation);
             marker.setPosition(new LatLng(aMapLocation.getLatitude(), aMapLocation
                     .getLongitude()));
+            if (isInit) { initMyLocation(aMapLocation); }
 //            longitude.setText(aMapLocation.getLongitude()+"");
 //            latitude.setText(aMapLocation.getLatitude()+"");
             float bearing = aMap.getCameraPosition().bearing;
@@ -158,7 +152,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point5));
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point6));
             marker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
-            .icons(giflist).period(50));
+            .icons(giflist).period(50).title("me").snippet("here"));
             MyLocationStyle myLocationStyle = new MyLocationStyle();
             myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource
                     (R.drawable.location_marker));
@@ -173,11 +167,32 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
             aMap.setOnCameraChangeListener(this);
             aMap.setOnMapTouchListener(this);
+            aMap.setOnMarkerClickListener(this);
 
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
+
+            Marker maker = aMap.addMarker(new MarkerOptions()
+            .title("me").snippet("here").anchor(0.5f, 0.5f).position(new LatLng(32.108492, 118.931033)).draggable(true).perspective(true)
+            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+
+            /*LatLngBounds latLngBounds = LatLngBounds.builder()
+                                        .include(new LatLng(32.104276, 118.927915))
+                                        .include(new LatLng(32.121051, 118.932853)).build();
+            school = aMap.addGroundOverlay(new GroundOverlayOptions()
+                                               .anchor(0.5f, 0.5f)
+                                               .transparency(0.1f)
+                                               .image(BitmapDescriptorFactory.fromAsset("njupt.jpg"))
+                                               .positionFromBounds(latLngBounds));*/
         }
+    }
+
+    private void initMyLocation(AMapLocation aMapLocation) {
+        LatLng initLatLng = new LatLng(aMapLocation.getLatitude(), aMapLocation.getLongitude());
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(initLatLng).tilt(0).zoom(16).build();
+        aMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+        isInit = false;
     }
 
 /*    private void saveTileToSD() throws IOException{
@@ -274,4 +289,17 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         float zoom = aMap.getCameraPosition().zoom;
         Toast.makeText(this, ""+zoom, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+        if (DEBUG) { Log.i(TAG, "-->onMarkerClick()"); }
+        for (LatLngBounds latLngBounds : area.getLlbs().keySet()) {
+            if (latLngBounds.contains(marker.getPosition())) {
+                marker.setSnippet("我在" + area.getLlbs().get(latLngBounds));
+                break;
+            }
+        }
+        return true;
+    }
+
 }

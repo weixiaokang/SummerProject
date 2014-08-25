@@ -42,9 +42,8 @@ import com.amapv2.apis.util.ToastUtil;
 /**
  * AMapV2地图中简单介绍一些Marker的用法.
  */
-public class MarkerActivity extends Activity implements OnMarkerClickListener,
-		OnInfoWindowClickListener, OnMarkerDragListener, OnMapLoadedListener,
-		OnClickListener, InfoWindowAdapter {
+public class MarkerActivity extends Activity implements OnMarkerClickListener, OnInfoWindowClickListener, OnMarkerDragListener, OnMapLoadedListener,
+		OnClickListener {
 	private MarkerOptions markerOption;
 	private TextView markerText;
 	private RadioGroup radioOption;
@@ -86,11 +85,11 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	}
 
 	private void setUpMap() {
-		aMap.setOnMarkerDragListener(this);// 设置marker可拖拽事件监听器
+//		aMap.setOnMarkerDragListener(this);// 设置marker可拖拽事件监听器
 		aMap.setOnMapLoadedListener(this);// 设置amap加载成功事件监听器
 		aMap.setOnMarkerClickListener(this);// 设置点击marker事件监听器
-		aMap.setOnInfoWindowClickListener(this);// 设置点击infoWindow事件监听器
-		aMap.setInfoWindowAdapter(this);// 设置自定义InfoWindow样式
+//		aMap.setOnInfoWindowClickListener(this);// 设置点击infoWindow事件监听器
+//		aMap.setInfoWindowAdapter(this);// 设置自定义InfoWindow样式
 		addMarkersToMap();// 往地图上添加marker
 	}
 
@@ -150,7 +149,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 		markerOption.position(Constants.XIAN);
 		markerOption.title("西安市").snippet("西安市：34.341568, 108.940174");
 		markerOption.perspective(true);
-		markerOption.draggable(true);
+//		markerOption.draggable(true);
 		markerOption.icon(
 //				BitmapDescriptorFactory
 //				.fromResource(R.drawable.location_marker)
@@ -173,7 +172,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 						.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
 				.perspective(true).draggable(true));
 		marker.setRotateAngle(90);// 设置marker旋转90度
-		marker.showInfoWindow();// 设置默认显示一个infowinfow
+//		marker.showInfoWindow();// 设置默认显示一个infowinfow
 	}
 
 	/**
@@ -181,18 +180,19 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	 */
 	@Override
 	public boolean onMarkerClick(final Marker marker) {
-		if (marker.equals(marker2)) {
+/*		if (marker.equals(marker2)) {
 			if (aMap != null) {
-				jumpPoint(marker);
+//				jumpPoint(marker);
 			}
 		}
-		markerText.setText("你点击的是" + marker.getTitle());
+//		markerText.setText("你点击的是" + marker.getTitle());*/
 		return false;
 	}
 
 	/**
 	 * marker点击时跳动一下
 	 */
+/*
 	public void jumpPoint(final Marker marker) {
 		final Handler handler = new Handler();
 		final long start = SystemClock.uptimeMillis();
@@ -220,15 +220,16 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 			}
 		});
 	}
+*/
 
 	/**
 	 * 监听点击infowindow窗口事件回调
 	 */
 	@Override
 	public void onInfoWindowClick(Marker marker) {
-		ToastUtil.show(this, "你点击了infoWindow窗口" + marker.getTitle());
+	/*	ToastUtil.show(this, "你点击了infoWindow窗口" + marker.getTitle());
 		ToastUtil.show(MarkerActivity.this, "当前地图可视区域内Marker数量:"
-				+ aMap.getMapScreenMarkers().size());
+				+ aMap.getMapScreenMarkers().size());*/
 	}
 
 	/**
@@ -236,10 +237,10 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	 */
 	@Override
 	public void onMarkerDrag(Marker marker) {
-		String curDes = marker.getTitle() + "拖动时当前位置:(lat,lng)\n("
+		/*String curDes = marker.getTitle() + "拖动时当前位置:(lat,lng)\n("
 				+ marker.getPosition().latitude + ","
 				+ marker.getPosition().longitude + ")";
-		markerText.setText(curDes);
+		markerText.setText(curDes);*/
 	}
 
 	/**
@@ -247,7 +248,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	 */
 	@Override
 	public void onMarkerDragEnd(Marker marker) {
-		markerText.setText(marker.getTitle() + "停止拖动");
+//		markerText.setText(marker.getTitle() + "停止拖动");
 	}
 
 	/**
@@ -255,7 +256,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	 */
 	@Override
 	public void onMarkerDragStart(Marker marker) {
-		markerText.setText(marker.getTitle() + "开始拖动");
+//		markerText.setText(marker.getTitle() + "开始拖动");
 	}
 
 	/**
@@ -273,7 +274,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 	/**
 	 * 监听自定义infowindow窗口的infocontents事件回调
 	 */
-	@Override
+	/*@Override
 	public View getInfoContents(Marker marker) {
 		if (radioOption.getCheckedRadioButtonId() != R.id.custom_info_contents) {
 			return null;
@@ -283,11 +284,11 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 		render(marker, infoContent);
 		return infoContent;
 	}
-
+*/
 	/**
 	 * 监听自定义infowindow窗口的infowindow事件回调
 	 */
-	@Override
+/*	@Override
 	public View getInfoWindow(Marker marker) {
 		if (radioOption.getCheckedRadioButtonId() != R.id.custom_info_window) {
 			return null;
@@ -297,12 +298,12 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 
 		render(marker, infoWindow);
 		return infoWindow;
-	}
+	}*/
 
 	/**
 	 * 自定义infowinfow窗口
 	 */
-	public void render(Marker marker, View view) {
+/*	public void render(Marker marker, View view) {
 		if (radioOption.getCheckedRadioButtonId() == R.id.custom_info_contents) {
 			((ImageView) view.findViewById(R.id.badge))
 					.setImageResource(R.drawable.badge_sa);
@@ -333,7 +334,7 @@ public class MarkerActivity extends Activity implements OnMarkerClickListener,
 		} else {
 			snippetUi.setText("");
 		}
-	}
+	}*/
 
 	@Override
 	public void onClick(View v) {

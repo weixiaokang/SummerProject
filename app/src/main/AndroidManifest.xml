@@ -26,11 +26,7 @@
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".LocationActivity"
@@ -40,6 +36,14 @@
             android:name=".LocationWeb"
             android:label="@string/title_activity_location_web" >
         </activity>
+        <activity android:name=".MarkerActivity"
+            android:label="Markwe">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            </activity>
     </application>
 
 </manifest>

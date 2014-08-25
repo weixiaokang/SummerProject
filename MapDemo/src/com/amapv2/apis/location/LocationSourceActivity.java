@@ -157,7 +157,8 @@ public class LocationSourceActivity extends Activity implements LocationSource,
 	@Override
 	public void onLocationChanged(AMapLocation aLocation) {
 		if (mListener != null && aLocation != null) {
-			mListener.onLocationChanged(aLocation);// 显示系统小蓝点
+			mListener.onLocationChanged(aLocation);
+			// 显示系统小蓝点
 			marker.setPosition(new LatLng(aLocation.getLatitude(), aLocation
 					.getLongitude()));// 定位雷达小图标
 			float bearing = aMap.getCameraPosition().bearing;
