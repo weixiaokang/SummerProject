@@ -1,4 +1,4 @@
-package com.weixiaokang.summerproject;
+package com.weixiaokang.summerproject.location;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -31,10 +31,14 @@ import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.weixiaokang.summerproject.R;
 import com.weixiaokang.summerproject.area.Area;
 import com.amap.api.maps.AMap.OnMarkerClickListener;
+import com.weixiaokang.summerproject.util.Constants;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MyActivity extends Activity implements LocationSource, AMapLocationListener
         , AMap.OnMapTouchListener, AMap.OnCameraChangeListener, OnMarkerClickListener {
@@ -45,8 +49,9 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
     private AMap aMap;
     private OnLocationChangedListener mListener;
     private LocationManagerProxy mAMapLocationManager;
+    private Marker[] markers= new Marker[2];
 //    private TileOverlay tileOverlay;
-    private Marker marker;
+    private Marker marker, me;
     private Point touchLocation = new Point();
     private boolean isInit = true;
     private Area area = new Area();
@@ -152,10 +157,9 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point5));
             giflist.add(BitmapDescriptorFactory.fromResource(R.drawable.point6));
             marker = aMap.addMarker(new MarkerOptions().anchor(0.5f, 0.5f)
-            .icons(giflist).period(50).title("me").snippet("here"));
+            .icons(giflist).period(50));
             MyLocationStyle myLocationStyle = new MyLocationStyle();
-            myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource
-                    (R.drawable.location_marker));
+            myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromResource(R.drawable.location_marker));
             myLocationStyle.strokeColor(Color.BLACK);
             myLocationStyle.radiusFillColor(Color.argb(100, 0, 0, 128));
             myLocationStyle.strokeWidth(0.1f);
@@ -173,10 +177,10 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
 
-            Marker maker = aMap.addMarker(new MarkerOptions()
-            .title("me").snippet("here").anchor(0.5f, 0.5f).position(new LatLng(32.108492, 118.931033)).draggable(true).perspective(true)
-            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-
+            me = aMap.addMarker(new MarkerOptions()
+                    .title("me").snippet("here").anchor(0.5f, 0.5f).position(Constants.BEIJING)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+            addMarkers();
             /*LatLngBounds latLngBounds = LatLngBounds.builder()
                                         .include(new LatLng(32.104276, 118.927915))
                                         .include(new LatLng(32.121051, 118.932853)).build();
@@ -195,6 +199,26 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         isInit = false;
     }
 
+    private void addMarkers() {
+        markers[0] = aMap.addMarker(new MarkerOptions()
+        .anchor(0.5f, 0.5f).position(new LatLng(32.108233, 118.930888))
+        .title("教四").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        markers[1] = aMap.addMarker(new MarkerOptions()
+        .anchor(0.5f, 0.5f).position(new LatLng(32.110817, 118.932966))
+        .title("兰苑").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        clearMarkers();
+    }
+
+    private void displayMarkers() {
+        for (int i = 0; i < markers.length; i++) {
+            markers[i].setVisible(true);
+        }
+    }
+    private void clearMarkers() {
+        for (int i = 0; i < markers.length; i++) {
+            markers[i].setVisible(false);
+        }
+    }
 /*    private void saveTileToSD() throws IOException{
         AssetManager assetManager = getAssets();
         File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");
@@ -263,7 +287,15 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return item.getItemId() == R.id.action_settings||super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.add_marker:
+                displayMarkers();
+                break;
+            case R.id.clear_marker:
+                clearMarkers();
+                break;
+        }
+        return false;
     }
 
     @Override
@@ -293,13 +325,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
     @Override
     public boolean onMarkerClick(final Marker marker) {
         if (DEBUG) { Log.i(TAG, "-->onMarkerClick()"); }
-        for (LatLngBounds latLngBounds : area.getLlbs().keySet()) {
-            if (latLngBounds.contains(marker.getPosition())) {
-                marker.setSnippet("我在" + area.getLlbs().get(latLngBounds));
-                break;
-            }
-        }
-        return true;
+        marker.showInfoWindow();
+        return false;
     }
-
 }

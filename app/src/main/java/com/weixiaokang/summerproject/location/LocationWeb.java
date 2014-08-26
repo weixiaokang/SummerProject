@@ -1,10 +1,12 @@
-package com.weixiaokang.summerproject;
+package com.weixiaokang.summerproject.location;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+
+import com.weixiaokang.summerproject.R;
 
 
 public class LocationWeb extends Activity {

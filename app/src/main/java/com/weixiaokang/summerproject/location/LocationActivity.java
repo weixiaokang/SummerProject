@@ -1,4 +1,4 @@
-package com.weixiaokang.summerproject;
+package com.weixiaokang.summerproject.location;
 
 import android.app.Activity;
 import android.location.Location;
@@ -17,6 +17,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 
 import com.amap.api.location.LocationProviderProxy;
+import com.weixiaokang.summerproject.R;
 import com.weixiaokang.summerproject.util.AMapUtil;
 import com.weixiaokang.summerproject.util.ToastUtil;
 

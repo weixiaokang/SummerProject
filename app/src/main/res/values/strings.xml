@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="add_marker">显示标记</string>
+    <string name="clear_marker">清除标记</string>
+    <string name="weather_in_grid">天气</string>
+    <string name="map_in_grid">地图</string>
     <string name="app_name">MyMap</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -31,6 +35,7 @@
     <string name="gpsfollow">追随</string>
     <string name="gpslocate">定位</string>
     <string name="gpsrotate">旋转</string>
+
     <string-array name="layers_array">
         <item>@string/normal</item>
         <item>@string/satellite</item>
@@ -130,5 +135,6 @@
     <string name="error_key">key验证无效！</string>
     <string name="error_other">未知错误，请稍后重试!错误码为</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
+    <string name="title_activity_main">MainActivity</string>
 
 </resources>
