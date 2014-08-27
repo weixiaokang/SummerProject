@@ -23,9 +23,12 @@ import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.Projection;
+import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
+import com.amap.api.maps.model.GroundOverlay;
+import com.amap.api.maps.model.GroundOverlayOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
@@ -58,7 +61,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
 
     private final boolean DEBUG = true;
     private final String TAG = "debug";
-//    private GroundOverlay school;
+    private GroundOverlay school;
     @Override
     public void onLocationChanged(Location location) {
 
@@ -166,7 +169,11 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             aMap.setMyLocationStyle(myLocationStyle);
             aMap.setMyLocationRotateAngle(180);
             aMap.setLocationSource(this);
-            aMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            UiSettings uiSettings = aMap.getUiSettings();
+            uiSettings.setMyLocationButtonEnabled(true);
+            uiSettings.setScaleControlsEnabled(true);
+
             aMap.setMyLocationEnabled(true);
             aMap.setMyLocationType(AMap.LOCATION_TYPE_LOCATE);
             aMap.setOnCameraChangeListener(this);
@@ -181,14 +188,12 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
                     .title("me").snippet("here").anchor(0.5f, 0.5f).position(Constants.BEIJING)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             addMarkers();
-            /*LatLngBounds latLngBounds = LatLngBounds.builder()
-                                        .include(new LatLng(32.104276, 118.927915))
-                                        .include(new LatLng(32.121051, 118.932853)).build();
-            school = aMap.addGroundOverlay(new GroundOverlayOptions()
+
+            /*school = aMap.addGroundOverlay(new GroundOverlayOptions()
                                                .anchor(0.5f, 0.5f)
                                                .transparency(0.1f)
                                                .image(BitmapDescriptorFactory.fromAsset("njupt.jpg"))
-                                               .positionFromBounds(latLngBounds));*/
+                                               .positionFromBounds(Constants.XIAOYUAN));*/
         }
     }
 
@@ -219,6 +224,7 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             markers[i].setVisible(false);
         }
     }
+
 /*    private void saveTileToSD() throws IOException{
         AssetManager assetManager = getAssets();
         File rootDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "njupt");

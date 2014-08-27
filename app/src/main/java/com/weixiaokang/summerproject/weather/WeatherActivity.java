@@ -1,32 +1,35 @@
-package com.weixiaokang.summerproject.location;
+package com.weixiaokang.summerproject.weather;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.weixiaokang.summerproject.R;
 
-
-public class LocationWeb extends Activity {
+public class WeatherActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location_web);
+        setContentView(R.layout.activity_weather);
 
-        WebView webView = (WebView) findViewById(R.id.web_location);
-        webView.loadUrl("http://mo.amap.com/navi/?start=116.3974,39.911975&dest=116.481493,39.990676&destName=方恒国际中心&key=f1fe4983a92cee2d1440e9930b8f49a2");
-        webView.getSettings().setSupportZoom(true);
-        webView.getSettings().setBuiltInZoomControls(true);
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://m.weather.com.cn/m/pn12/weather.htm");
+        webView.setInitialScale(57 * 4);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.location_web, menu);
+        getMenuInflater().inflate(R.menu.weather, menu);
         return true;
     }
 

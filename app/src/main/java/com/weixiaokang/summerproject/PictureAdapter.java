@@ -53,6 +53,6 @@ public class PictureAdapter extends BaseAdapter{
         return gridView;
     }
 
-    private static final int[] image = {R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher, R.drawable.ic_launcher};
-    private static final int[] text = { R.string.weather_in_grid, R.string.map_in_grid, R.string.app_name, R.string.app_name };
+    private static final int[] image = {R.drawable.weather, R.drawable.maps_alt, R.drawable.guide, R.drawable.quit};
+    private static final int[] text = { R.string.weather_in_grid, R.string.map_in_grid, R.string.leader_in_grid, R.string.quit_in_grid};
 }

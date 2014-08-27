@@ -1,1 +1,1 @@
-include ':app', ':MapDemo', ':app3'
+include ':app', ':MapDemo'

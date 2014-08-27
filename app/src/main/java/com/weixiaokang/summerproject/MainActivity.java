@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.weixiaokang.summerproject.guide.WebGuide;
 import com.weixiaokang.summerproject.location.MyActivity;
+import com.weixiaokang.summerproject.weather.WeatherActivity;
 
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener {
@@ -49,14 +51,21 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Intent intent = null;
         switch (position) {
             case 0:
+                intent = new Intent(MainActivity.this, WeatherActivity.class);
+                startActivity(intent);
                 break;
             case 1:
                 intent = new Intent(MainActivity.this, MyActivity.class);
                 startActivity(intent);
                 break;
             case 2:
+                intent = new Intent(MainActivity.this, WebGuide.class);
+                startActivity(intent);
                 break;
             case 3:
+                finish();
+                break;
+            default:
                 break;
         }
     }

@@ -35,6 +35,12 @@ public class Constants {
 	public static final LatLng XIAN = new LatLng(34.341568, 108.940174);// 西安市经纬度
 	public static final LatLng ZHENGZHOU = new LatLng(34.7466, 113.625367);// 郑州市经纬度
 
+    public static final LatLngBounds XIAOYUAN = LatLngBounds.builder()
+            .include(new LatLng(32.104583, 118.928036))
+            .include(new LatLng(32.105493, 118.930846))
+            .include(new LatLng(32.117522, 118.924278))
+            .include(new LatLng(32.121528, 118.932916))
+            .build();
     public static final LatLngBounds JIAOSI = LatLngBounds.builder()
             .include(new LatLng(32.108258, 118.930435))
             .include(new LatLng(32.108776, 118.931371))

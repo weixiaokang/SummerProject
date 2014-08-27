@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="leader_in_grid">导航</string>
+    <string name="quit_in_grid">退出</string>
     <string name="add_marker">显示标记</string>
     <string name="clear_marker">清除标记</string>
     <string name="weather_in_grid">天气</string>
@@ -136,5 +138,6 @@
     <string name="error_other">未知错误，请稍后重试!错误码为</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_weather">WeatherActivity</string>
 
 </resources>
