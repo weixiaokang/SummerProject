@@ -25,6 +25,7 @@ public class WebGuide extends Activity {
         webSettings.setBuiltInZoomControls(true);
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
+
     }
 
 
