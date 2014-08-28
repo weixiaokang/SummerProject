@@ -35,7 +35,6 @@ public class WebEncoding {
     public static String urlEncode(String data, String secretKey) throws Exception {
         byte[] key = encodeHmacKey(data.getBytes(), secretKey.getBytes());
         String basekey = encodeBaseHmacKey(key);
-
         return URLEncoder.encode(basekey.trim(), "UTF-8");
     }
 }
