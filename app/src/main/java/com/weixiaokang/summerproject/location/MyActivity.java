@@ -54,11 +54,9 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
     private LocationManagerProxy mAMapLocationManager;
     private Marker[] markers= new Marker[2];
 //    private TileOverlay tileOverlay;
-    private Marker marker, me;
+    private Marker marker;
     private Point touchLocation = new Point();
     private boolean isInit = true;
-    private Area area = new Area();
-
     private final boolean DEBUG = true;
     private final String TAG = "debug";
     private GroundOverlay school;
@@ -183,11 +181,6 @@ public class MyActivity extends Activity implements LocationSource, AMapLocation
             myLocation = (Button) findViewById(R.id.my_location);
             longitude = (TextView) findViewById(R.id.longitude);
             latitude = (TextView) findViewById(R.id.latitude);
-
-            me = aMap.addMarker(new MarkerOptions()
-                    .title("me").snippet("here").anchor(0.5f, 0.5f).position(Constants.BEIJING)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-            addMarkers();
 
             /*school = aMap.addGroundOverlay(new GroundOverlayOptions()
                                                .anchor(0.5f, 0.5f)

@@ -29,12 +29,12 @@ public class WebEncoding {
     }
 
     public static String encodeBaseHmacKey(byte[] data) throws Exception {
-        return Base64.encodeToString(data, Base64.DEFAULT);
+        return Base64.encodeToString(data, Base64.NO_WRAP);
     }
 
     public static String urlEncode(String data, String secretKey) throws Exception {
         byte[] key = encodeHmacKey(data.getBytes(), secretKey.getBytes());
         String basekey = encodeBaseHmacKey(key);
-        return URLEncoder.encode(basekey.trim(), "UTF-8");
+        return URLEncoder.encode(basekey, "UTF-8");
     }
 }
