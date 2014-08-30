@@ -7,14 +7,12 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 import com.weixiaokang.summerproject.R;
 import com.weixiaokang.summerproject.util.AMapUtil;
 import com.weixiaokang.summerproject.util.Constants;
+import com.weixiaokang.summerproject.util.WeatherUtil;
 import com.weixiaokang.summerproject.util.WebEncoding;
 
 import org.apache.http.HttpResponse;
@@ -23,8 +21,16 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.Iterator;
 
 public class WeatherActivity extends Activity {
 
@@ -34,17 +40,20 @@ public class WeatherActivity extends Activity {
     private static final String APPID = "fe18c6dda88e31c0";
     private static final String PRE_APPID = "fe18c6";
     private String result = "", url = "";
+    private String areaid = "101190101", type = Constants.FORECAST1D, date = WeatherUtil.getNowTime();
+    private String temp = "";
     private Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
         final TextView textView = (TextView) findViewById(R.id.textview);
-        String PUBLIC_KEY = "http://open.weather.com.cn/data/?areaid=101010100&type=alarm&date=201408282155&appid=" + APPID;
+        if (DEBUG) { Log.i(TAG, areaid+"\n" + type + "\n" + date + "\n"); }
+        String PUBLIC_KEY = "http://open.weather.com.cn/data/?areaid="+areaid+"&type="+type+"&date="+date+"&appid=" + APPID;
         try {
             String key = WebEncoding.urlEncode(PUBLIC_KEY, PRIVATE_KEY);
             if (DEBUG) { Log.i(TAG, "key : "+ key); }
-            url = "http://open.weather.com.cn/data/?areaid=101010100&type="+ Constants.INDEX+"&date="+ AMapUtil.getNowTime()+"&appid=" + PRE_APPID + "&key=" + key;
+            url = "http://open.weather.com.cn/data/?areaid="+areaid+"&type="+ type +"&date="+ date +"&appid=" + PRE_APPID + "&key=" + key;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +63,8 @@ public class WeatherActivity extends Activity {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 if (result != null) {
-                    textView.setText(result);
+                    textView.setText(temp);
+                    Log.i(TAG, result);
                 }
             }
         };
@@ -74,11 +84,23 @@ public class WeatherActivity extends Activity {
         HttpResponse httpResponse;
         try {
             httpResponse = httpClient.execute(httpRequest);
-            result = EntityUtils.toString(httpResponse.getEntity());
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+//                String jsonObject =  EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+                InputStreamReader inputStreamReader = new InputStreamReader(httpResponse.getEntity().getContent());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String string = null;
+                while ((string = bufferedReader.readLine()) != null) {
+                    Log.i("result", string);
+                }
+                JSONObject jsonObject = new JSONObject();
+            } else {
+                result = "请求失败";
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

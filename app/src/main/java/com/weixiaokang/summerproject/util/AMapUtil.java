@@ -120,16 +120,6 @@ public class AMapUtil {
 		return df.format(date);
 	}
 
-    /**
-     * get now time and format the time to weather size
-     * @return the now time
-     */
-    public static String getNowTime() {
-        SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmm");
-        Date date = new Date(System.currentTimeMillis());
-        return df.format(date);
-    }
-
 	public static final String HtmlBlack = "#000000";
 	public static final String HtmlGray = "#808080";
 }
