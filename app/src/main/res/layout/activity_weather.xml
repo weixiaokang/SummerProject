@@ -5,8 +5,14 @@
     android:orientation="vertical"
     tools:context="com.weixiaokang.summerproject.weather.WeatherActivity">
 
-    <TextView
-        android:id="@+id/textview"
+    <ImageView
+        android:id="@+id/image_in_weather"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp" />
+    <ListView
+        android:id="@+id/listview_in_weather"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 </LinearLayout>

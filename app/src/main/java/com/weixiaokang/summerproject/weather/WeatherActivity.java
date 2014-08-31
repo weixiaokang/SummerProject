@@ -7,6 +7,10 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.weixiaokang.summerproject.R;
@@ -30,7 +34,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class WeatherActivity extends Activity {
 
@@ -43,11 +49,13 @@ public class WeatherActivity extends Activity {
     private String areaid = "101190101", type = Constants.FORECAST1D, date = WeatherUtil.getNowTime();
     private String temp = "";
     private Handler handler;
+    private String[] strings = {"one", "two", "three", "four", "five"};
+    private ImageView imageView;
+    private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-        final TextView textView = (TextView) findViewById(R.id.textview);
         if (DEBUG) { Log.i(TAG, areaid+"\n" + type + "\n" + date + "\n"); }
         String PUBLIC_KEY = "http://open.weather.com.cn/data/?areaid="+areaid+"&type="+type+"&date="+date+"&appid=" + APPID;
         try {
@@ -63,7 +71,6 @@ public class WeatherActivity extends Activity {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
                 if (result != null) {
-                    textView.setText(temp);
                     Log.i(TAG, result);
                 }
             }
@@ -78,6 +85,12 @@ public class WeatherActivity extends Activity {
         }).start();
     }
 
+    private void initView() {
+        imageView = (ImageView) findViewById(R.id.image_in_weather);
+        listView = (ListView) findViewById(R.id.listview_in_weather);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, strings);
+        listView.setAdapter(adapter);
+    }
     private void sendRequest(String url) {
         HttpClient httpClient = new DefaultHttpClient();
         HttpGet httpRequest = new HttpGet(url);
