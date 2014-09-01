@@ -1,1 +1,1 @@
-include ':app', ':MapDemo', ':app2'
+include ':app', ':MapDemo', ':app2', ':ResideMenu', ':ResideMenuDemo'
