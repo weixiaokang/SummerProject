@@ -41,7 +41,7 @@ public class PictureAdapter extends BaseAdapter{
         View gridView;
         if (convertView == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            gridView = layoutInflater.inflate(R.layout.grid_view, null);
+            gridView = layoutInflater.inflate(R.layout.view_grid, null);
             ImageView imageView = (ImageView) gridView.findViewById(R.id.image_in_grid);
             TextView textView = (TextView) gridView.findViewById(R.id.text_in_grid);
             imageView.setImageResource(image[position]);
