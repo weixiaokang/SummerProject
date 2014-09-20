@@ -30,7 +30,7 @@ public class Constants {
     public static final String OBSERVE = "observe";
     public static final String ALARM = "warm";
     public static final String INDEX = "index";
-    public static final String FORECAST1D = "forecast3d";
+    public static final String FORECAST3D = "forecast3d";
 
     public static final LatLngBounds XIAOYUAN = LatLngBounds.builder()
             .include(new LatLng(32.104583, 118.928036))

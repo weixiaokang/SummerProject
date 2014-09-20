@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/ResideMenu" />
             <option value="$PROJECT_DIR$/ResideMenuDemo" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/webchrome" />
           </set>
         </option>
       </GradleProjectSettings>
