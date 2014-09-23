@@ -3,7 +3,10 @@ package com.weixiaokang.webchrome;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -16,12 +19,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MyActivity extends Activity {
 
     private Button forwardButton, backButton, gotoButton;
     private EditText urlText;
     private WebView webView;
+    private final static String URLS = "http://www.miyijia.com/t/mobileimg";
+    private String result = "";
+    private Handler handler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +64,93 @@ public class MyActivity extends Activity {
         setWebView();
 
         setOnClickListener();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                requestsData();
+                handler.sendEmptyMessage(305);
+            }
+        }).start();
+        handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                if (msg.what == 305 && !result.equals("")) {
+                    Log.i("debug", result);
+                }
+            }
+        };
     }
 
+    private void requestsdataByGet() {
+        String string = URLS + "?p=1&num=15";
+        try {
+            URL url = new URL(string);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String input = null;
+            while ((input = bufferedReader.readLine()) != null) {
+                result += input + "\n";
+            }
+            inputStreamReader.close();
+            urlConnection.disconnect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void requestsDataByConnection() {
+        try {
+            URL url = new URL(URLS);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setDoInput(true);
+            urlConnection.setDoOutput(true);
+            urlConnection.setUseCaches(true);
+            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            DataOutputStream outputStream = new DataOutputStream(urlConnection.getOutputStream());
+            StringBuilder params = new StringBuilder();
+            params.append("p=")
+                    .append("1")
+                    .append("&num=")
+                    .append("15");
+            outputStream.writeBytes(params.toString());
+            outputStream.flush();
+            outputStream.close();
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String string = null;
+                while ((string = bufferedReader.readLine()) != null) {
+                    result += string + "\n";
+                }
+                inputStreamReader.close();
+            }
+            urlConnection.disconnect();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void requestsData() {
+        HttpClient httpClient = new DefaultHttpClient();
+        HttpPost httpRequest = new HttpPost(URLS);
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("p", "1"));
+        params.add(new BasicNameValuePair("num", "15"));
+        try {
+            httpRequest.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
+            HttpResponse httpResponse = httpClient.execute(httpRequest);
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+                Log.i("debug", EntityUtils.toString(httpResponse.getEntity()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void setOnClickListener() {
         forwardButton.setOnClickListener(new View.OnClickListener() {
