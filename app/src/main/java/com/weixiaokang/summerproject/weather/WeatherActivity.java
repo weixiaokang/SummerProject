@@ -7,6 +7,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -43,10 +44,11 @@ public class WeatherActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_weather);
 
 //        initView();
-        String PUBLIC_KEY_L = "http://open.weather.com.cn/data/?areaid=" + areaid + "&type=" + Constants.OBSERVE + "&date=" + date + "&appid=" + APPID;
+/*        String PUBLIC_KEY_L = "http://open.weather.com.cn/data/?areaid=" + areaid + "&type=" + Constants.OBSERVE + "&date=" + date + "&appid=" + APPID;
         String PUBLIC_KEY_C_F = "http://open.weather.com.cn/data/?areaid=" + areaid + "&type=" + Constants.FORECAST3D + "&date=" + date + "&appid=" + APPID;
         String PUBLIC_KEY_I = "http://open.weather.com.cn/data/?areaid=" + areaid + "&type=" + Constants.INDEX + "&date=" + date + "&appid=" + APPID;
         try {
@@ -84,7 +86,7 @@ public class WeatherActivity extends Activity {
                 Message message = handler.obtainMessage();
                 handler.sendMessage(message);
             }
-        }).start();
+        }).start();*/
     }
 
 /*    private void initView() {

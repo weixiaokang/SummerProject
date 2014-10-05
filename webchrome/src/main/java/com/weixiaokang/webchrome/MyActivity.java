@@ -145,7 +145,7 @@ public class MyActivity extends Activity {
             httpRequest.setEntity(new UrlEncodedFormEntity(params, "utf-8"));
             HttpResponse httpResponse = httpClient.execute(httpRequest);
             if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                Log.i("debug", EntityUtils.toString(httpResponse.getEntity()));
+                String result = EntityUtils.toString(httpResponse.getEntity());
             }
         } catch (IOException e) {
             e.printStackTrace();

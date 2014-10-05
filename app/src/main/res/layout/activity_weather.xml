@@ -1,18 +1,35 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<com.weixiaokang.summerproject.weather.SlidingMenu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:me="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.weixiaokang.summerproject.weather.WeatherActivity">
-
-    <ImageView
-        android:id="@+id/image_in_weather"
-        android:layout_weight="1"
+    android:scrollbars="none"
+    me:rightPadding="100dp">
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
-    <ListView
-        android:id="@+id/listview_in_weather"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-</LinearLayout>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:background="@drawable/ic_launcher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@android:color/holo_blue_bright"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <ListView
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.weixiaokang.summerproject.weather.SlidingMenu>
